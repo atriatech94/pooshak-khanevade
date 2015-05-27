@@ -18,7 +18,7 @@
             <!-------------------------start shopping_cart--------------------------->
             <div class="shopping_cart bw" ng-repeat="card in card">
                 <span class="close_btn" p_id="{{card.ID}}" price="{{card.regular_price}}" ></span>
-                <div class="cart_img"><img src="{{card.img}}" ></div>
+                <div class="cart_img"><img ng-src="{{card.img}}" ></div>
                 <div class="detail_cust">
                     <p>{{card.post_title}}</p>
                     <span>xxlarge</span>
