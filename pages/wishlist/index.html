@@ -1,0 +1,39 @@
+<!-------------------------start header_page--------------------------->
+<div class="header_page red">
+    <div class="header_text">لیست علاقه مندی ها</div>
+    <div class="buys">
+        <a class="tags" href="#/"><img src="img/icon_left.png"></a>
+    </div>
+    <div class="clear"></div>
+    <div class="your_order" >محصولات</div>
+</div>
+<wish-detail>
+<!-------------------------start content--------------------------->
+<div class="content">
+    <div class="content_main">
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <!-------------------------start product_cart--------------------------->
+        <div class="product_cart">
+            <!-------------------------start shopping_cart--------------------------->
+            <div class="shopping_cart bw" ng-repeat="card in card">
+                <span class="close_btn" p_id="{{card.ID}}"></span>
+                <div class="cart_img"><img src="{{card.img}}" ></div>
+                <div class="detail_cust">
+                    <p>{{card.post_title}}</p>
+                    <span>xxlarge</span>
+                    <span>صورتی</span>
+                   
+                </div>
+                <div class="cust_cart">{{card.regular_price | currency : '' : 0}} تومان</div>
+                  <div class="button_place_order">
+                      <button id="to_card" p_id="{{card.ID}}">افزودن به سبد خرید</button>
+                 </div>
+            </div>
+        </div>
+        <!------------------------- --------------------------->
+    </div>
+</div>
+</wish-detail>
+<div class="swipe_color"></div>
+<!-------------------------end content--------------------------->

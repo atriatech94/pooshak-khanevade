@@ -1,0 +1,84 @@
+<!doctype html>
+<html ng-app="pooshak">
+<head>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no" />
+    <meta name="msapplication-tap-highlight" content="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,  user-scalable=no">
+    <link rel="stylesheet" media="all" href="css/reset.min.css" type="text/css">
+    <link rel="stylesheet" media="all" href="css/style.css"  type="text/css">
+    <link rel="stylesheet" media="all" href="css/swiper.min.css"  type="text/css">
+<title>pooshakkhanevade</title>
+</head>
+
+    <body>
+        <sw-swipe>
+            <div class="swiper-container swiper1">
+                <div class="swiper-wrapper">
+                    <!---- swipe one load data --------------------------------->
+                    <div class="swiper-slide" page="content">
+                        <div class="contain">
+                            <div ng-view></div>
+                        </div>
+                    </div>
+                    <!---- swipe two navigation --------------------------------->
+                        <div class="swiper-slide" page="nav">
+                            <div class="nav_main">
+                                <div class="logo">
+                                    <img src="img/logo.png" >
+                                </div>
+                                <nav>
+                                    <ul>
+                                        <li id="product"><a href=""><img src="img/layette.png">محصولات</a>
+                                            <ul class="sub_menu">
+                                                <li><a href="">محصولات</a></li>
+                                                <li><a href="">محصولات</a></li>
+                                                <li><a href="">محصولات</a></li>
+                                            </ul>       
+                                        </li>
+                                    <li><a href="#/myprofile"><img src="img/setting.png">نظیمات</a></li>
+                                    <li><a href="#/cart"><img src="img/buy_basket.png">سبد خرید</a></li>
+                                    <li><a href=""><img src="img/layette.png">درباره ما</a></li>                                
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <!---- swipe two navigation --------------------------------->
+                </div>
+                <!-- Add Pagination -->
+            </div>
+        </sw-swipe>
+    </body>
+    <!------ Auto loaded----------------------------------------------------------->
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
+    <script type="text/javascript" src="js/angular-route.min.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+    <!--<script type="text/javascript" src="cordova.js"></script>-->
+    <script type="text/javascript" src="js/index.js"></script>
+    <script type="text/javascript" src="js/routes.js"></script>   
+    <script type="text/javascript" src="js/services/get_data.js"></script>
+    <!------ controller----------------------------------------------------------->
+    <script src="js/controllers/index-controller.js"></script>
+    <script src="js/controllers/product-controller.js"></script>
+    <script src="js/controllers/cart-controller.js"></script>
+    <script src="js/controllers/myprofile-controller.js"></script>
+     <script src="js/controllers/wishlist-controller.js"></script>
+     <!------ library----------------------------------------------------------->
+    <script type="text/javascript" src="js/swiper.min.js"></script> 
+    <script type="text/javascript" src="js/swiper.jquery.min.js"></script> 
+    <script type="text/javascript" src="js/angular-swiper.js"></script> 
+    <script type="text/javascript" src="js/moment.min.js"></script> 
+    <script type="text/javascript" src="js/moment-jalaali.js"></script> 
+    <script type="text/javascript" src="js/fa.js"></script> 
+    <script type="text/javascript" src="js/fancy/jquery.fancybox.js"></script>
+
+    
+    <!------ controller----------------------------------------------------------->
+    <script type="text/javascript">
+        app.initialize();
+    </script>
+</html>
+<span>طراحی و پیاده سازی توسط 
+<a target="_blank" href="http://atriatech.ir">ATRIATECH</a>
+</span>

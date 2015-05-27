@@ -1,0 +1,45 @@
+<!-------------------------start header_page--------------------------->
+<div class="header_page">
+    <div class="menu"><img src="img/menu.png"></div>
+    <div class="header_text">محصولات</div>
+    <div class="buys">
+        <a class="tags" href="#/wishlist"><img src="img/tag.png"></a>
+        <a class="buy_bs" href="#/cart"><span>{{card_count}}</span><img src="img/buy-bs.png"></a>
+    </div>
+    <div class="clear"></div>
+</div>
+<!-------------------------start content--------------------------->
+<div class="content">
+    <div class="content_main">
+       <div class="gap"></div>
+        <!------------------start search------------------------->
+        <div class="search_box"><input type="text" ng-model="search.$" name="search" placeholder="فقط تایپ کنید ..." ><span><img src="img/search.png"></span></div>
+        <!------------------end search------------------------->
+        <!------------------start header product------------------------->
+        <div class="product_h2">
+            <span></span>
+                <h2>محصولات پوشاک خانواده</h2>
+            <span></span>
+        </div>
+        <!------------------end header product------------------------->
+        <div class="product"  >
+        <!------------------------------------------->
+         
+            <a ng-repeat="product in product | filter:search" href="#/product/{{product.ID}}" class="product_one" >
+                <img src="{{product.img}}">
+                <div class="detail">
+                    <span class="product_name">{{product.post_title}}</span>
+                    <span class="product_cust">{{product.regular_price | currency : '' : 0}} تومان</span>
+                </div>
+            </a>
+  
+        <!------------------------------------------->
+        <div class="clear"></div>
+        </div>
+        
+        <!------------------------------------------->
+    </div>
+    
+</div>
+<div class="swipe_color"></div>
+<!-------------------------end content--------------------------->

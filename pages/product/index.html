@@ -1,0 +1,86 @@
+<!-------------------------start header_page--------------------------->
+    <!-------------------------start header_page--------------------------->
+    <div class="header_page medadi">
+        <div class="menu"><img src="img/menu.png"></div>
+        <div class="header_text">محصولات</div>
+        <div class="buys">
+            <a class="tags" href="#/"><img src="img/icon_left_w.png"></a>
+            <a class="buy_bs" href="#/cart"><span id="card_count">{{card_count}}</span><img src="img/buy-bs_w.png"></a>
+        </div>
+        <div class="clear"></div>
+          <!------------------------  ---------------------------->
+            <div class="add_to_cart medadi">
+            <add-button>
+                <button p_id="{{detail[0].ID}}"  class="add_to_cart_botten">اضافه به سبد خرید</button>
+                <button p_id="{{detail[0].ID}}" class="add_to_whishlist_botten">مورد علاقه من</button>
+            </add-button>
+            </div>
+            <!------------------------  ---------------------------->
+    </div>
+    <div class="clear"></div>
+    <!-------------------------start content--------------------------->
+    <product-detail>
+    <!-------------------------start content--------------------------->
+    <div class="content">
+        <div class="content_main">
+            <div class="gap"></div>
+    <!------------------------ slider ---------------------------->
+            <div class="product_slider">
+                <div class="swiper-container product_slider">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide"><img src="{{detail[0].img}}"></div>
+                        <div class="swiper-slide"><img src="{{detail[0].img}}"></div>
+                        <div class="swiper-slide"><img src="{{detail[0].img}}"></div>
+                    </div>
+                    <!-- Add Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+            <div class="clear"></div>
+    <!------------------------  product_cust_name ---------------------------->
+            <div class="product_cust_name">
+                <p>{{detail[0].post_title}}</p>
+                <span class="cust">{{detail[0].regular_price | currency : '' : 0}} تومان</span>
+            </div>
+    <!------------------------ product_des ---------------------------->
+            <div class="product_des">
+                <img src="img/plus.png">
+                <a href="">توضیحات</a>
+            </div>
+    <!------------------------ product_option ---------------------------->
+            <div class="product_option">
+                <div class="option">
+                    <p>رنگ : </p>
+                    <select>
+                        <option value="">صورتی</option>
+                        <option value="">مشکی</option>
+                        <option value="">زرد</option>
+                        <option value="">آبی</option>
+                    </select>
+                </div>
+                <div class="line_break"></div>
+                <div class="option">
+                    <p>جنس : </p>
+                    <select>
+                        <option value="">large</option>
+                        <option value="">mediom</option>
+                        <option value="">xlarge</option>
+                        <option value="">xxlarge</option>
+                    </select>
+                </div>
+            </div>
+    <!------------------------  ---------------------------->
+            <div class="cart_btn">
+                <button>اظافه کردن به سبد خرید</button>
+            </div>
+    <!------------------------  ---------------------------->
+            <div class="line_break"></div>
+    <!------------------------  ---------------------------->
+    <!------------------------  ---------------------------->
+    <!------------------------  ---------------------------->
+
+		</div>
+    </div>
+</product-detail>
+<div class="swipe_color"></div>
+<!-------------------------end content--------------------------->
