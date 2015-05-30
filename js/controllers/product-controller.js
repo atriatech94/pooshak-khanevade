@@ -1,7 +1,16 @@
 angular.module('pooshak')
 .controller('ProductController', function($scope,$rootScope,$routeParams,$filter,$sce) {
-  $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
+	if(localStorage.getItem('card'))
+	{
+       $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
+	}
+	else
+	{
+		$scope.card_count=0;
+	}
   $scope.detail = $filter('filter')($rootScope.product, {ID:$routeParams.id});
+  console.log($scope.detail);
+  
 
 })
 .directive('addButton', function ($rootScope){
@@ -12,9 +21,23 @@ angular.module('pooshak')
 				
 					
 						$('.add_to_cart_botten').click(function(){
-							
-						var card = JSON.parse(localStorage.getItem('card'));
-					    var wish_list = JSON.parse(localStorage.getItem('wish_list'));
+						
+						if(localStorage.getItem('card'))
+                        {	
+						   var card = JSON.parse(localStorage.getItem('card'));
+					    }
+						else
+						{
+							var card = null;
+						}
+						if(localStorage.getItem('wish_list'))
+                        {
+					        var wish_list = JSON.parse(localStorage.getItem('wish_list'));
+						}
+						else
+						{
+							var wish_list = null;
+						}
 						var card_id = $('.add_to_cart_botten').attr('p_id');
 						if(card != null)
 						{
@@ -57,8 +80,22 @@ angular.module('pooshak')
 					
 					$('.add_to_whishlist_botten').click(function(){
 						
-						var card = JSON.parse(localStorage.getItem('card'));
-					    var wish_list = JSON.parse(localStorage.getItem('wish_list'));
+						if(localStorage.getItem('card'))
+                        {	
+						   var card = JSON.parse(localStorage.getItem('card'));
+					    }
+						else
+						{
+							var card = null;
+						}
+						if(localStorage.getItem('wish_list'))
+                        {
+					        var wish_list = JSON.parse(localStorage.getItem('wish_list'));
+						}
+						else
+						{
+							var wish_list = null;
+						}
 						var wish_id = $('.add_to_whishlist_botten').attr('p_id');
 						
 						if(card != null)

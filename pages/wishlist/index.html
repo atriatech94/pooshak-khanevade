@@ -25,7 +25,8 @@
                     <span>صورتی</span>
                    
                 </div>
-                <div class="cust_cart">{{card.regular_price | currency : '' : 0}} تومان</div>
+                <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
+                <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>
                   <div class="button_place_order">
                       <button id="to_card" p_id="{{card.ID}}">افزودن به سبد خرید</button>
                  </div>

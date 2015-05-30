@@ -1,18 +1,27 @@
 angular.module('pooshak')
 .controller('CartIndexController', function($scope,$rootScope,$filter) {
-	
-   var card = JSON.parse(localStorage.getItem('card'));
-          var detail = [];
-		  var cost = 0;
-	      for(i=0;i<card.length;i++)
-		  {
-		    detail[i] = $filter('filter')($rootScope.product, {ID:card[i]})[0];
-			cost = cost + parseInt(detail[i].regular_price);
-		  }
-   $scope.card = detail;
-   $scope.cost = cost;
-   
 
+   if(localStorage.getItem('card'))
+   {
+	   var card = JSON.parse(localStorage.getItem('card'));
+			  var detail = [];
+			  var cost = 0;
+			  for(i=0;i<card.length;i++)
+			  {
+				detail[i] = $filter('filter')($rootScope.product, {ID:card[i]})[0];
+				if(detail[i].sale_price == "")
+				{
+				   cost = cost + parseInt(detail[i].regular_price);
+				}
+				else
+				{
+					cost = cost + parseInt(detail[i].sale_price);
+				}
+			  }
+	   $scope.card = detail;
+	   $scope.cost = cost;
+   
+   }
 })
 .directive('cartDetail', function (){
 		return {

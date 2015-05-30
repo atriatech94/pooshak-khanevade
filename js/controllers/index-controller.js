@@ -1,11 +1,24 @@
 is_open = 0 ;
 angular.module('pooshak')
-.controller('IndexController', function($scope,$rootScope,Product) {
-	$scope.card_count = JSON.parse(localStorage.getItem('card')).length;
-	Product.all().success(function(data){
-		$rootScope.product = data;
-		console.log(data);
-    });
+    .controller('IndexController', function($scope,$rootScope,Product,Category) {
+        if(localStorage.getItem('card') != null)
+        {
+            $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
+        }
+		else
+		{
+			  $scope.card_count = 0;
+		}
+    
+	       Product.all().success(function(data){
+           $rootScope.product = data;
+           console.log(data);
+		   });
+		   
+		   Category.all().success(function(data1){
+           $rootScope.category = data1;
+           console.log(data1);
+          });
 
 
 })

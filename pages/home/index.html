@@ -26,10 +26,13 @@
         <!------------------------------------------->
          
             <a ng-repeat="product in product | filter:search" href="#/product/{{product.ID}}" class="product_one" >
-                <img ng-src="{{product.img}}">
+                <img ng-src="{{product.img}}" ng-if="product.img">
+                <img src="img-test/test.jpg" ng-if="!product.img">
                 <div class="detail">
                     <span class="product_name">{{product.post_title}}</span>
-                    <span class="product_cust">{{product.regular_price | currency : '' : 0}} تومان</span>
+                    <span class="product_cust" ng-if="!product.sale_price">{{product.regular_price | currency : '' : 0}} تومان</span>
+                    <span style="color:#999" class="product_cust" ng-if="product.sale_price"><strike>{{product.regular_price | currency : '' : 0}} تومان </strike></span>
+                    <span class="product_cust" ng-if="product.sale_price">{{product.sale_price | currency : '' : 0}} تومان</span>
                 </div>
             </a>
   
