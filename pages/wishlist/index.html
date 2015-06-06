@@ -18,12 +18,14 @@
             <!-------------------------start shopping_cart--------------------------->
             <div class="shopping_cart bw" ng-repeat="card in card">
                 <span class="close_btn" p_id="{{card.ID}}"></span>
-                <div class="cart_img"><img ng-src="{{card.img}}" ></div>
+                <div class="cart_img">
+                <img ng-src="{{card.img}}" ng-if="card.img" >
+                <img ng-src="img/no-img.jpg" ng-if="!card.img">
+                
+                </div>
                 <div class="detail_cust">
                     <p>{{card.post_title}}</p>
-                    <span>xxlarge</span>
-                    <span>صورتی</span>
-                   
+                   <span ng-repeat="attribute in card.attributes">{{attribute.name}} : {{attribute.value}}</span>
                 </div>
                 <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
                 <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>

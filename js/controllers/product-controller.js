@@ -43,27 +43,41 @@ angular.module('pooshak')
 						{
 						   for(i=0;i<card.length;i++)
 						    {
-							  if(card[i] == card_id)
+							  if(card[i].id == card_id)
 							  {
-								  alert('you add this product to your card');
+								   text =  "در سبد خرید موجود است" ;
+                                   $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 								  return false;
 								  
 							  }
 						    }
-							
-						   card.push(card_id);
-						   localStorage.setItem("card", JSON.stringify(card));
+							var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						     card.push({id:card_id,atributes:atribute});
+						     localStorage.setItem("card", JSON.stringify(card));
+							 
+							 
 						}
 						else
 						{
-							var card = [card_id];
+							var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						     card = [{id:card_id,atributes:atribute}];
 							localStorage.setItem("card", JSON.stringify(card));
 						}
 						if(wish_list != null)
 						{
 						for(j=0;j<wish_list.length;j++)
 						    {
-								  if(wish_list[j] == card_id)
+								  if(wish_list[j].id == card_id)
 								  {
 									  wish_list.splice(j, 1);
 									  localStorage.setItem("wish_list", JSON.stringify(wish_list));
@@ -73,9 +87,9 @@ angular.module('pooshak')
 								}
 						}
 						$('#card_count').text(String(parseInt($('#card_count').text())+1));
-						alert('added to cart');
-						
-					   
+						 text =  "به سبد خرید اضافه شد" ;
+                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+	 
 					});
 					
 					$('.add_to_whishlist_botten').click(function(){
@@ -102,9 +116,10 @@ angular.module('pooshak')
 							{
 									for(i=0;i<card.length;i++)
 									{
-									  if(card[i] == wish_id)
+									  if(card[i].id == wish_id)
 									  {
-										  alert('dar cart mojood no wish');
+										  text =  "کالا در سبد خرید موجود است" ;
+                                          $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 										  return false;
 										  
 									  }
@@ -115,23 +130,38 @@ angular.module('pooshak')
 							
 						   for(i=0;i<wish_list.length;i++)
 						    {
-							  if(wish_list[i] == wish_id)
+							  if(wish_list[i].id == wish_id)
 							  {
-								  alert('you add this product to your wish_list');
+								  text =  "کالا در لیست علاقه مندی ها موجود است" ;
+                                 $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 								  return false;
 								  
 							  }
 						    }
-						   wish_list.push(wish_id);
-						   localStorage.setItem("wish_list", JSON.stringify(wish_list));
+						    var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						     wish_list.push({id:wish_id,atributes:atribute});
+						     localStorage.setItem("wish_list", JSON.stringify(wish_list));
+							 console.log(wish_list);
 						}
 						else
 						{
-							var wish_list = [wish_id];
+							var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						    wish_list = [{id:wish_id,atributes:atribute}];
 							localStorage.setItem("wish_list", JSON.stringify(wish_list));
+				
 						}
-						alert('added to wish');
-						
+						text =  "به لیست علاقه مندی ها اضافه شد" ;
+                        $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 					   //localStorage.clear();
 						
 					   
@@ -147,11 +177,86 @@ angular.module('pooshak')
                 $(document).ready(function () {
                
              /*===============================================================================*/   
-                    var swiper = new Swiper('.product_slider', {
+                       var swiper = new Swiper('.product_slider', {
                         pagination: '.swiper-pagination',
                         paginationClickable: true,
                         spaceBetween: 30,
                     });
+					
+					
+					$('.add').click(function(){
+						
+					   if(localStorage.getItem('card'))
+                        {	
+						   var card = JSON.parse(localStorage.getItem('card'));
+					    }
+						else
+						{
+							var card = null;
+						}
+						if(localStorage.getItem('wish_list'))
+                        {
+					        var wish_list = JSON.parse(localStorage.getItem('wish_list'));
+						}
+						else
+						{
+							var wish_list = null;
+						}
+						var card_id = $('.add_to_cart_botten').attr('p_id');
+						if(card != null)
+						{
+						   for(i=0;i<card.length;i++)
+						    {
+							  if(card[i].id == card_id)
+							  {
+								  text =  "در سبد خرید موجود است" ;
+                                   $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+								  return false;
+								  
+							  }
+						    }
+							var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						     card.push({id:card_id,atributes:atribute});
+						     localStorage.setItem("card", JSON.stringify(card));
+							 
+							 
+						}
+						else
+						{
+							var atribute = new Array();
+							$('select').each(
+								function(){  
+									var input = $(this);
+									atribute.push({name:input.attr('name'),value:input.val()});
+								});
+						     card = [{id:card_id,atributes:atribute}];
+							localStorage.setItem("card", JSON.stringify(card));
+						}
+						if(wish_list != null)
+						{
+						for(j=0;j<wish_list.length;j++)
+						    {
+								  if(wish_list[j].id == card_id)
+								  {
+									  wish_list.splice(j, 1);
+									  localStorage.setItem("wish_list", JSON.stringify(wish_list));
+									  break;
+									  
+								  }
+								}
+						}
+						$('#card_count').text(String(parseInt($('#card_count').text())+1));
+						text =  "به سبد خرید اضافه شد" ;
+                        $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+						
+						
+					   
+					});
                   
              /*===============================================================================*/          
              /*===============================================================================*/          

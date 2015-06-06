@@ -18,6 +18,11 @@
  */
 document.addEventListener("backbutton",amintest, false);
 
+window.addEventListener('load', function() {
+    new FastClick(document.body);
+}, false);
+
+
 function amintest(){
                         
     

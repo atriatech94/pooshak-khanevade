@@ -19,9 +19,26 @@ angular.module('pooshak')
 						$('input[name=phone]').val(info.phone);
 						$('input[name=email]').val(info.email);
 						
+					
+						
 					}
+					
+					 $('#reset').click(function(){
+						 
+						$('input[name=fullname]').val('');
+						$('input[name=state]').val('');
+						$('input[name=city]').val('');
+						$('textarea[name=address]').val('');
+						$('input[name=zipcode]').val('');
+						$('input[name=phone]').val('');
+						$('input[name=email]').val('');
+						localStorage.removeItem("user");
+						
+						 
+						 
+					 });
                   
-				   $('form').submit(function(){
+				   $('#save').click(function(){
 					   
 					  var user = new Object(); 
 					  user.name = $('input[name=fullname]').val(); 
@@ -34,19 +51,22 @@ angular.module('pooshak')
 					  if(user.name == "" || user.state == "" || user.city == "" || user.address == "" || 
 					  user.zipcode == "" ||  user.phone == "" ||  user.email == ""  )
 					  {
-						 alert('همه پر');
+						  text =  "همه فیلدها اجباری هستند" ;
+                          $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 						 return false;
 					  }
 					  
 					  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 					  if( !emailReg.test(user.email ) )
 					   {
-						  alert('email');
+						  text =  "ایمیل نا معتبر است" ;
+                          $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 						  return false;
 					   }
 					  
 					  localStorage.setItem("user", JSON.stringify(user));
-					  alert('saved');
+					  text =  "اطلاعات با موفقیت ذخیره شد" ;
+                      $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 					  //localStorage.clear();
 					  return false;
 					   

@@ -1,6 +1,7 @@
 is_open = 0 ;
 angular.module('pooshak')
     .controller('IndexController', function($scope,$rootScope,Product,Category) {
+		
         if(localStorage.getItem('card') != null)
         {
             $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
@@ -14,14 +15,63 @@ angular.module('pooshak')
            $rootScope.product = data;
            console.log(data);
 		   });
-		   
-		   Category.all().success(function(data1){
-           $rootScope.category = data1;
-           console.log(data1);
-          });
-
 
 })
+.directive('nwCategorySelect', function (Category){
+		return {
+			replace:true,
+			restrict: "E",
+			templateUrl: "pages/home/nw-category-select.html",
+			scope:{
+				 activeCategory: "="
+			 },
+			link: function(scope,element,attrs){
+				
+		         Category.all().success(function(data1){
+                 scope.categories = data1;
+				
+          });
+				
+			},
+			controller: function($scope){
+				$scope.activeCategory = "همه";
+				this.getActiveCategory = function(){
+					return $scope.activeCategory;
+				}
+				
+				this.setActiveCategory = function(category){
+					$scope.activeCategory = category.cat_name;
+				}
+				
+			}
+			
+}})
+.directive('nwCategoryItem', function (){
+		return {
+			
+			 restrict: "E",
+			 templateUrl: "pages/home/nw-category-item.html",
+			 scope:{
+				 category: "="
+			 },
+			 require: "^nwCategorySelect",
+			 link: function(scope,element,attrs,nwCategorySelectCtrl){
+				 scope.makeActive = function(){
+					 var loc = window.location.hash;
+					 if(loc != "#/")
+					 {
+					    window.location.hash = "#/";
+					 }
+					 nwCategorySelectCtrl.setActiveCategory(scope.category);
+					 
+				  }
+				    scope.categoryActive = function(){
+				    return nwCategorySelectCtrl.getActiveCategory() === scope.category.cat_name;
+				  }
+			   }
+			
+}})
+
 .directive('swSwipe', function (){
 		return {
 			link: function($scope) {
@@ -64,4 +114,4 @@ angular.module('pooshak')
 
                 });	
             }
-}})
+}});

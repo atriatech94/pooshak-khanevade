@@ -9,10 +9,10 @@
         </div>
         <div class="clear"></div>
           <!------------------------  ---------------------------->
-            <div class="add_to_cart medadi">
+            <div class="add_to_cart medadi" ng-if="detail[0].in_stock">
             <add-button>
-                <button p_id="{{detail[0].ID}}"  class="add_to_cart_botten">اضافه به سبد خرید</button>
-                <button p_id="{{detail[0].ID}}" class="add_to_whishlist_botten">مورد علاقه من</button>
+                <button p_id="{{detail[0].ID}}"   class="add_to_cart_botten">اضافه به سبد خرید</button>
+                <button p_id="{{detail[0].ID}}"  class="add_to_whishlist_botten">مورد علاقه من</button>
             </add-button>
             </div>
             <!------------------------  ---------------------------->
@@ -28,7 +28,10 @@
             <div class="product_slider">
                 <div class="swiper-container product_slider">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide"><img ng-src="{{detail[0].img}}"></div>
+                        <div class="swiper-slide">
+                                <img ng-src="{{detail[0].img}}"  ng-if="detail[0].img">
+                                <img ng-src="img/no-img.jpg" ng-if="!detail[0].img">
+                         </div>
                         <div class="swiper-slide" ng-repeat="gallery in detail[0].gallery"><img ng-src="{{gallery}}"></div>
                     </div>
                     <!-- Add Pagination -->
@@ -42,37 +45,24 @@
                 <span class="cust" ng-if="!detail[0].sale_price">{{detail[0].regular_price | currency : '' : 0}} تومان</span>
                 <span class="cust" ng-if="detail[0].sale_price"><strike>{{detail[0].regular_price | currency : '' : 0}} تومان</strike></span>
                 <span class="cust" ng-if="detail[0].sale_price">{{detail[0].sale_price | currency : '' : 0}} تومان</span>
+                <span class="cust" ng-if="detail[0].in_stock">موجود</span>
+                <span class="cust" ng-if="!detail[0].in_stock">نا موجود</span>
             </div>
-    <!------------------------ product_des ---------------------------->
-            <div class="product_des">
-                <img src="img/plus.png">
-                <a href="">توضیحات</a>
-            </div>
+   
+      
     <!------------------------ product_option ---------------------------->
             <div class="product_option">
-                <div class="option">
-                    <p>رنگ : </p>
-                    <select>
-                        <option value="">صورتی</option>
-                        <option value="">مشکی</option>
-                        <option value="">زرد</option>
-                        <option value="">آبی</option>
+                <div class="option" ng-repeat="attribute in detail[0].attributes">
+                    <p>{{attribute[0]}} : </p>
+                    <select name="{{attribute[0]}}">
+                        <option ng-repeat="attr in attribute" ng-if="$index != 0" value="{{attr}}">{{attr}}</option>
                     </select>
                 </div>
                 <div class="line_break"></div>
-                <div class="option">
-                    <p>جنس : </p>
-                    <select>
-                        <option value="">large</option>
-                        <option value="">mediom</option>
-                        <option value="">xlarge</option>
-                        <option value="">xxlarge</option>
-                    </select>
-                </div>
             </div>
     <!------------------------  ---------------------------->
-            <div class="cart_btn">
-                <button>اظافه کردن به سبد خرید</button>
+            <div class="cart_btn" ng-show="detail[0].in_stock">
+                <button class="add">افزودن به سبد خرید</button>
             </div>
     <!------------------------  ---------------------------->
             <div class="line_break"></div>

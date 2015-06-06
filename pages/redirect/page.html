@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Untitled Document</title>
+<link rel="stylesheet" href="../../css/reset.min.css" media="all" type="text/css" >
+<script type="text/javascript" src="../../js/jquery-1.11.2.min.js"></script>
+<script>
+$(function(){
+   		 $('#parchase').val(localStorage.getItem('parchase'));
+		 setTimeout(function(){
+				 $('form').trigger('submit')
+			 },100); 
+	});	
+</script>
+</head>
+
+<body>
+
+<form action="http://pooshakkhanevade.com/shop.php?pay" method="post">
+<P>در حال اتصال به درگاه</P>
+<input type="hidden" id="parchase" name="par" value="">
+</form>
+</body>
+<style>
+body{
+	direction:rtl;
+	width:100%;
+	height:100%;
+	border:none;
+	position:absolute;
+	box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	-ms-box-sizing:border-box;
+	top:0;
+	right:0;
+}
+</style>
+</html>
+

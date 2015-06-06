@@ -8,6 +8,7 @@
     <link rel="stylesheet" media="all" href="css/reset.min.css" type="text/css">
     <link rel="stylesheet" media="all" href="css/style.css"  type="text/css">
     <link rel="stylesheet" media="all" href="css/swiper.min.css"  type="text/css">
+    <link rel="stylesheet" type="text/css" href="js/fancy/jquery.fancybox.css" media="screen" />
 <title>pooshakkhanevade</title>
 </head>
 
@@ -29,15 +30,10 @@
                                 </div>
                                 <nav>
                                     <ul>
-                                        <li id="product"><a href=""><img src="img/layette.png">محصولات</a>
-                                            <ul class="sub_menu">
-                                                <li><a href="">محصولات</a></li>
-                                                <li><a href="">محصولات</a></li>
-                                                <li><a href="">محصولات</a></li>
-                                            </ul>       
-                                        </li>
-                                    <li><a href="#/myprofile"><img src="img/setting.png">نظیمات</a></li>
+                                    <nw-category-select active-category="activeCategory"></nw-category-select> 
+                                    <li><a href="#/myprofile"><img src="img/setting.png">مشخصات</a></li>
                                     <li><a href="#/cart"><img src="img/buy_basket.png">سبد خرید</a></li>
+                                    <li><a href="#/wishlist"><img src="img/buy_basket.png">علاقه مندی ها</a></li>
                                     <li><a href=""><img src="img/layette.png">درباره ما</a></li>                                
                                 </ul>
                             </nav>
@@ -54,16 +50,17 @@
     <script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
     <script type="text/javascript" src="js/angular-route.min.js"></script>
     <script type="text/javascript" src="js/app.js"></script>
-    <!--<script type="text/javascript" src="cordova.js"></script>-->
+     <script type="text/javascript" src="cordova.js"></script>
     <script type="text/javascript" src="js/index.js"></script>
     <script type="text/javascript" src="js/routes.js"></script>   
     <script type="text/javascript" src="js/services/get_data.js"></script>
+    <script type='application/javascript' src='js/fastclick.js'></script>
     <!------ controller----------------------------------------------------------->
     <script src="js/controllers/index-controller.js"></script>
     <script src="js/controllers/product-controller.js"></script>
     <script src="js/controllers/cart-controller.js"></script>
     <script src="js/controllers/myprofile-controller.js"></script>
-     <script src="js/controllers/wishlist-controller.js"></script>
+    <script src="js/controllers/wishlist-controller.js"></script>
      <!------ library----------------------------------------------------------->
     <script type="text/javascript" src="js/swiper.min.js"></script> 
     <script type="text/javascript" src="js/swiper.jquery.min.js"></script> 
