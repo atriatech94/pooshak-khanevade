@@ -41,16 +41,17 @@ angular.module('pooshak')
              /*===============================================================================*/   
                
                    $('.content').delegate('.product_lists_s',"click",function(){
-					   alert(123);
-                    if(is_detail_open != $(this).index() )
+                    
+                    if(is_detail_open != $(this).attr('index') )
                     {
-                       is_detail_open = $(this).index();
+                       is_detail_open = $(this).attr('index');
                        $('*#product_lists_detail').removeClass('show_det').slideUp(100,"linear");
                        $('*.product_lists_s').removeClass('active');
                        $(this).addClass('active');
                        $(this).next('.product_lists_detail').addClass('show_det').slideDown(100,"linear"); 
                         
                     }else{
+                        
                          is_detail_open = 0;
                          $('*#product_lists_detail').removeClass('show_det').slideUp(100,"linear");
                          $('*.product_lists_s').removeClass('active');

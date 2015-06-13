@@ -1,5 +1,6 @@
 <!-------------------------start header_page--------------------------->
 <div class="header_page red">
+    <div class="menu"><img src="img/menu_w.png"></div>
     <div class="header_text">پیگیری سفارش</div>
     <div class="buys">
         <a class="back_icon" href="#/"><img src="img/icon_left.png"></a>
@@ -28,7 +29,7 @@
                 </div>
                 <!------------------------- --------------------------->
             <div ng-repeat="order in orders">
-                <div class="product_lists_s">
+                <div index="{{order.id}}" class="product_lists_s">
                     <div class="rows_tr">{{order.id}}</div>
                     <div class="rows_tr">{{order.date}}</div>
                     <div class="rows_tr">{{order.price}}</div>
@@ -36,7 +37,7 @@
                     <div class="clear"></div>
                 </div>
                 <!------------------------- detail --------------------------->
-                    <div class="" id="product_lists_detail">
+                    <div class="product_lists_detail" id="product_lists_detail">
                             <!-------------------------start shopping_cart--------------------------->
                                 <div class="shopping_cart bw" ng-repeat="card in order.card">
                                     <div class="cart_img">

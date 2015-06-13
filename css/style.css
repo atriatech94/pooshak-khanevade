@@ -1188,7 +1188,24 @@ body{
 input{
     font-size: 18px !important;
 }
-/*--=============--   --===================--*/
+/*--=============-- info_atriatech  --===================--*/
+.info_atriatech{
+    position: relative;
+    width: 100%;
+    height: 40px;
+    font-size: 14px;
+    top:50px;
+    text-align: center;
+    padding-bottom: 20px;
+    line-height: 22px;
+}
+.info_atriatech a{
+    color:#377cba;
+    border-bottom: 1px solid #377cba;
+    padding-bottom: 0px;
+    font-family: arial !important;
+    line-height: 14px !important;
+}
 /*--=============--   --===================--*/
 /*--=============--   --===================--*/
 /*--=============--   --===================--*/

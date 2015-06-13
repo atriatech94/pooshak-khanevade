@@ -129,12 +129,14 @@ angular.module('pooshak')
 														  $('.shopping_cart').hide();
 														  $('#price').text('0');
 														  document.getElementById("loading").style.display="none";
-														  alert("پرداخت موفق")
+														  text =  "<p>پرداخت موفق</p><p>برای مشاهده وضعیت سفارش به قسمت پیگیری سفارش مراجعه کنید</p>" ;
+                                                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 													 }
 													 else
 													 {
 														 document.getElementById("loading").style.display="none";
-														 alert('پرداخت نا موفق');
+														 text =  "پرداخت نا موفق" ;
+                                                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 													 }
 													 
 													 
@@ -182,7 +184,7 @@ angular.module('pooshak')
 														  $('.shopping_cart').hide();
 														  $('#price').text('0');
 														  document.getElementById("loading").style.display="none";
-														  text = "<p> سفارش شما با موفقیت ثبت شد </p><br><p></p>شماره پیگیری سفارش <p><b>"+order_id+"</b><br></p>" ;
+														  text = "<p> سفارش شما با موفقیت ثبت شد </p><br><p></p>شماره پیگیری سفارش <p  style='text-align:center;'><b>"+order_id+"</b><br></p>" ;
                                                           $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 														 
 														 
@@ -221,7 +223,11 @@ angular.module('pooshak')
 						
 						});        
              /*===============================================================================*/   
-                  
+                    $('#cancell').click(function(){
+						localStorage.removeItem('card');
+						$('.shopping_cart').hide();
+						$('#price').text('0');
+						});
              /*===============================================================================*/          
              /*===============================================================================*/          
              /*===============================================================================*/          
