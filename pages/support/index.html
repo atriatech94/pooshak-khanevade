@@ -1,0 +1,74 @@
+<!-------------------------start header_page--------------------------->
+<div class="header_page red">
+    <div class="header_text">پیگیری سفارش</div>
+    <div class="buys">
+        <a class="back_icon" href="#/"><img src="img/icon_left.png"></a>
+    </div>
+    <div class="clear"></div>
+    <div class="your_order" >سفارش های شما</div>
+</div>
+<cart-detail>
+<!-------------------------start content--------------------------->
+<div class="content">
+    <div class="content_main">
+        <div class="gap"></div>
+        <div class="gap"></div>
+        <!-------------------------start product_cart--------------------------->
+        <support-jq>
+            <div class="support">
+                <!------------------------- --------------------------->
+                <div class="same_table_tr">
+                    <!------------------------- --------------------------->
+                    <div class="rows_th">شماره</div>
+                    <div class="rows_th">تاریخ</div>
+                    <div class="rows_th">مبلغ</div>
+                    <div class="rows_th">جزییات</div>
+                    <div class="clear"></div>
+                    <!------------------------- --------------------------->
+                </div>
+                <!------------------------- --------------------------->
+            <div ng-repeat="order in orders">
+                <div class="product_lists_s">
+                    <div class="rows_tr">{{order.id}}</div>
+                    <div class="rows_tr">{{order.date}}</div>
+                    <div class="rows_tr">{{order.price}}</div>
+                    <div class="rows_tr"><button></button></div>
+                    <div class="clear"></div>
+                </div>
+                <!------------------------- detail --------------------------->
+                    <div class="" id="product_lists_detail">
+                            <!-------------------------start shopping_cart--------------------------->
+                                <div class="shopping_cart bw" ng-repeat="card in order.card">
+                                    <div class="cart_img">
+                                    <img ng-src="{{card.img}}" ng-if="card.img">
+                                    <img ng-src="img/no-img.jpg" ng-if="!card.img">
+                                   </div>
+                                    <div class="detail_cust">
+                                        <p>{{card.post_title}}</p>
+                                        <span ng-repeat="attribute in card.attributes">{{attribute.name}} : {{attribute.value}}</span>
+                                        
+                                    </div>
+                                    <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
+                                     <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>
+                                </div>
+                                <!------------------------- --------------------------->
+                          
+                                <div class="shopping_cart_status">
+                                    <div class="detail_cust">
+                                        <p>وضعیت : </p>
+                                    </div>
+                                    <div class="cust_cart"> {{ req[$index] }}</div>
+                                </div>
+                     </div>           <!------------------------- --------------------------->
+                    
+                  </div>
+                <!------------------------- --------------------------->
+               
+            </div>
+            <!------------------------- --------------------------->
+        </support-jq>
+    </div>
+</div>
+</cart-detail>
+<div class="swipe_color"></div>
+<!-------------------------end content--------------------------->

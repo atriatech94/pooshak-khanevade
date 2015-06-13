@@ -177,12 +177,7 @@ angular.module('pooshak')
                 $(document).ready(function () {
                
              /*===============================================================================*/   
-                       var swiper = new Swiper('.product_slider', {
-                        pagination: '.swiper-pagination',
-                        paginationClickable: true,
-                        spaceBetween: 30,
-                    });
-					
+                     
 					
 					$('.add').click(function(){
 						
@@ -264,4 +259,18 @@ angular.module('pooshak')
 
                 });	
             }
-}});
+}})
+.directive('productSw', function (){
+		return {
+			link: function($scope) {
+                $(document).ready(function () {
+                   
+                   setTimeout(function(){
+                       new Swiper( '.product_slider' , { pagination: '.swiper-pagination', paginationClickable: true, spaceBetween: 30} );
+                       
+                   },1000);
+                    
+                });
+            }
+        }});
+

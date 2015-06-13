@@ -1,7 +1,1 @@
-<li><a href="" ng-click="makeActive()" ng-class="{'active':categoryActive()}">
-<img src="img/setting.png">{{category.cat_name}}</a></li>
-<style>
-.active{
-	color:#F00;
-}
-</style>
+<li ng-class="dyn_li"><a href="" ng-click="makeActive()" ng-class="{'active':categoryActive()}"><span></span>{{category.cat_name}}</a></li>

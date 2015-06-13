@@ -1,6 +1,5 @@
 angular.module('pooshak')
 .controller('CartIndexController', function($scope,$rootScope,$filter) {
-
  var cost = 0;
    if(localStorage.getItem('card'))
    {
@@ -82,15 +81,17 @@ angular.module('pooshak')
 								else
 								{
 									var method = $('input[name=payment]:checked').val();
-									var order_id = $.now();
+									var order_id = $.now()%1000000 + Math.floor((Math.random() * 100000) + 1);
+									var card = JSON.parse(localStorage.getItem('card'));
+									var user = JSON.parse(localStorage.getItem('user'));
+									var parchase = JSON.stringify([{order_id:order_id},card,user]);
 									if(method == '0')
 									{
 									
-										var card = JSON.parse(localStorage.getItem('card'));
-										var user = JSON.parse(localStorage.getItem('user'));
-										var parchase = JSON.stringify([{order_id:order_id},card,user]);
+										
 										var ref = window.open('http://pooshakkhanevade.com/shop.php?pay=1&par='+parchase, '_blank', 'location=yes');
 										ref.addEventListener('exit', function() { 
+										      document.getElementById("loading").style.display = "block";
 											   $.ajax({
 												  method: "POST",
 												  url: "http://pooshakkhanevade.com/order-check.php",
@@ -98,30 +99,42 @@ angular.module('pooshak')
 												  data: { order_id : order_id }
 												})
 												  .done(function( msg ) {
-													 if(msg == 'yes')
+													 if(msg == 1)
 													 {
-														
+														var order = new Object();
+														order.id = order_id;
+														order.price = $('#price').text();
+														order.date = moment().format('jYYYY/jM/jD') ;
+														order.card = card;
 														if(localStorage.getItem('orders'))
-															{	
-															   var orders = JSON.parse(localStorage.getItem('orders'));
-															}
-															else
-															{
-																var orders = null;
-															}
-															if(orders != null)
-						                                    {
-																orders.push(order_id);
-																localStorage.setItem("orders", JSON.stringify(orders));
-															}
-															else
-															{
-																orders = [order_id];
-																localStorage.setItem("orders", JSON.stringify(orders));
-															}
-															alert('order complete');
-													        localStorage.removeItem('card');
-													       $('.shopping_cart').hide();
+														  {	
+															 var orders = JSON.parse(localStorage.getItem('orders'));
+															 
+														  }
+														  else
+														  {
+															  var orders = null;
+														  }
+														  if(orders != null)
+														  {
+															  orders.push(order);
+															  localStorage.setItem("orders", JSON.stringify(orders));
+														  }
+														  else
+														  {
+															  orders = [order];
+															  localStorage.setItem("orders", JSON.stringify(orders));
+														  }
+														  localStorage.removeItem('card');
+														  $('.shopping_cart').hide();
+														  $('#price').text('0');
+														  document.getElementById("loading").style.display="none";
+														  alert("پرداخت موفق")
+													 }
+													 else
+													 {
+														 document.getElementById("loading").style.display="none";
+														 alert('پرداخت نا موفق');
 													 }
 													 
 													 
@@ -130,7 +143,61 @@ angular.module('pooshak')
 									}
 									else
 									{
-										alert('posti');
+										
+										document.getElementById("loading").style.display = "block";
+										$.ajax({
+												  method: "POST",
+												  url: "http://pooshakkhanevade.com/shop-posti.php",
+												  data: {order_id : order_id,parchase : parchase }
+												})
+												  .done(function( msg ) {
+													
+													if(msg == 1)
+													{
+														var order = new Object();
+														order.id = order_id;
+														order.card = card;
+														order.price = $('#price').text();
+														order.date = moment().format('jYYYY/jM/jD') ;
+														if(localStorage.getItem('orders'))
+														  {	
+															 var orders = JSON.parse(localStorage.getItem('orders'));
+															 
+														  }
+														  else
+														  {
+															  var orders = null;
+														  }
+														  if(orders != null)
+														  {
+															  orders.push(order);
+															  localStorage.setItem("orders", JSON.stringify(orders));
+														  }
+														  else
+														  {
+															  orders = [order];
+															  localStorage.setItem("orders", JSON.stringify(orders));
+														  }
+														  localStorage.removeItem('card');
+														  $('.shopping_cart').hide();
+														  $('#price').text('0');
+														  document.getElementById("loading").style.display="none";
+														  text = "<p> سفارش شما با موفقیت ثبت شد </p><br><p></p>شماره پیگیری سفارش <p><b>"+order_id+"</b><br></p>" ;
+                                                          $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+														 
+														 
+														
+													}
+													 else
+													{
+														document.getElementById("loading").style.display="none";
+														text = "<p>ثبت سفارش با مشکل روبرو شد</p><p>دوباره تلاش کنید</p>" ;
+                                                        $.fancybox.open( '<p class="alert">'+text+'</p>',{});  
+													}
+										   });
+																						
+										
+										
 									}
 									
 							

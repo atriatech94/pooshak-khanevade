@@ -1,7 +1,7 @@
 <!-------------------------start header_page--------------------------->
 <div class="header_page">
     <div class="menu"><img src="img/menu.png"></div>
-    <div class="header_text">محصولات</div>
+    <div class="header_text">محصولات محصولات محصولات محصولات محصولات</div>
     <div class="buys">
         <a class="tags" href="#/wishlist"><img src="img/tag.png"></a>
         <a class="buy_bs" href="#/cart"><span>{{card_count}}</span><img src="img/buy-bs.png"></a>
@@ -25,7 +25,7 @@
         <div class="product"  >
         <!------------------------------------------->
          
-            <a ng-repeat="product in product | filter:{category:activeCategory} | filter:search" href="#/product/{{product.ID}}" class="product_one" >
+            <div ng-repeat="product in product | filter:{category:activeCategory} | filter:search" href="#/product/{{product.ID}}" class="product_one" >
                 <img ng-src="{{product.img}}" ng-if="product.img">
                 <img ng-src="img/no-img.jpg" ng-if="!product.img">
                 <div class="detail">
@@ -34,7 +34,7 @@
                     <span style="color:#999" class="product_cust" ng-if="product.sale_price"><strike>{{product.regular_price | currency : '' : 0}} تومان </strike></span>
                     <span class="product_cust" ng-if="product.sale_price">{{product.sale_price | currency : '' : 0}} تومان</span>
                 </div>
-            </a>
+            </div>
   
         <!------------------------------------------->
         <div class="clear"></div>

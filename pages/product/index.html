@@ -1,8 +1,8 @@
 <!-------------------------start header_page--------------------------->
     <!-------------------------start header_page--------------------------->
     <div class="header_page medadi">
-        <div class="menu"><img src="img/menu.png"></div>
-        <div class="header_text">محصولات</div>
+        <div class="menu"><img src="img/menu_w.png"></div>
+        <div class="header_text">{{detail[0].post_title}}</div>
         <div class="buys">
             <a class="tags" href="#/"><img src="img/icon_left_w.png"></a>
             <a class="buy_bs" href="#/cart"><span id="card_count">{{card_count}}</span><img src="img/buy-bs_w.png"></a>
@@ -24,29 +24,36 @@
     <div class="content">
         <div class="content_main">
             <div class="gap"></div>
+            <br>
     <!------------------------ slider ---------------------------->
             <div class="product_slider">
-                <div class="swiper-container product_slider">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                                <img ng-src="{{detail[0].img}}"  ng-if="detail[0].img">
-                                <img ng-src="img/no-img.jpg" ng-if="!detail[0].img">
-                         </div>
-                        <div class="swiper-slide" ng-repeat="gallery in detail[0].gallery"><img ng-src="{{gallery}}"></div>
+                
+                <!------------------------ slider ---------------------------->
+                <product_sw>
+                    <div class="swiper-container product_slider">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide" style="background-image:url({{detail[0].img}});" ng-if="detail[0].img"></div>
+                            <div class="swiper-slide" style="background-image:url(img/no-img.jpg);" ng-if="!detail[0].img"></div>
+                            <div class="swiper-slide" ng-repeat="gallery in detail[0].gallery" style="background-image:url({{gallery}});"></div>
+                        </div>
+                        <!-- Add Pagination -->
+                        <div class="swiper-pagination"></div>
                     </div>
-                    <!-- Add Pagination -->
-                    <div class="swiper-pagination"></div>
-                </div>
+                </product_sw>
+            <!------------------------ slider ---------------------------->
             </div>
             <div class="clear"></div>
     <!------------------------  product_cust_name ---------------------------->
             <div class="product_cust_name">
                 <p>{{detail[0].post_title}}</p>
-                <span class="cust" ng-if="!detail[0].sale_price">{{detail[0].regular_price | currency : '' : 0}} تومان</span>
-                <span class="cust" ng-if="detail[0].sale_price"><strike>{{detail[0].regular_price | currency : '' : 0}} تومان</strike></span>
-                <span class="cust" ng-if="detail[0].sale_price">{{detail[0].sale_price | currency : '' : 0}} تومان</span>
-                <span class="cust" ng-if="detail[0].in_stock">موجود</span>
-                <span class="cust" ng-if="!detail[0].in_stock">نا موجود</span>
+                <div class="pro_det">
+                    <span class="cust" ng-if="!detail[0].sale_price">{{detail[0].regular_price | currency : '' : 0}} تومان</span>
+                    <span class="off" ng-if="detail[0].sale_price"><strike>{{detail[0].regular_price | currency : '' : 0}} تومان</strike></span>
+                    <span class="cust" ng-if="detail[0].sale_price">{{detail[0].sale_price | currency : '' : 0}} تومان</span>
+                    <span class="yes_m" ng-if="detail[0].in_stock">موجود</span>
+                    <span class="no_m" ng-if="!detail[0].in_stock">نا موجود</span>
+                </div>
+                <div class="clear"></div>
             </div>
    
       
@@ -57,15 +64,18 @@
                     <select name="{{attribute[0]}}">
                         <option ng-repeat="attr in attribute" ng-if="$index != 0" value="{{attr}}">{{attr}}</option>
                     </select>
+                    <div class="line_break"></div>
                 </div>
-                <div class="line_break"></div>
+                
             </div>
+     <!------------------------  ---------------------------->       
+            
     <!------------------------  ---------------------------->
             <div class="cart_btn" ng-show="detail[0].in_stock">
                 <button class="add">افزودن به سبد خرید</button>
             </div>
     <!------------------------  ---------------------------->
-            <div class="line_break"></div>
+            
     <!------------------------  ---------------------------->
     <!------------------------  ---------------------------->
     <!------------------------  ---------------------------->

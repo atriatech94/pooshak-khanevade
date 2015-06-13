@@ -20,6 +20,10 @@ angular.module('pooshak')
             templateUrl: 'pages/myprofile/index.html',
             controller: 'MyprofileController',
         })
+		.when('/support', {
+            templateUrl: 'pages/support/index.html',
+            controller: 'SupportController',
+        })
 		.when('/', {
             templateUrl: 'pages/home/index.html',
             controller: 'IndexController',

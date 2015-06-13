@@ -1,21 +1,34 @@
 is_open = 0 ;
+var getdata = 0;
 angular.module('pooshak')
-    .controller('IndexController', function($scope,$rootScope,Product,Category) {
+.controller('IndexController', function($scope,$rootScope,Product,Category) {
 		
-        if(localStorage.getItem('card') != null)
-        {
-            $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
-        }
-		else
-		{
-			  $scope.card_count = 0;
-		}
+     document.getElementById("loading").style.display="block";
     
-	       Product.all().success(function(data){
-           $rootScope.product = data;
-           console.log(data);
-		   });
-
+    if(localStorage.getItem('card') != null)
+    {
+        $scope.card_count = JSON.parse(localStorage.getItem('card')).length;
+    }
+    else
+    {
+        $scope.card_count = 0;
+    }
+    if(getdata == 1)
+    {
+        document.getElementById("loading").style.display="none";
+    }
+    var online = check_net();
+    if(getdata==0 && online==1)
+    {
+        $rootScope.product =  get_data_product(Product,$rootScope);
+        getdata ++;
+        
+    }else if(getdata==0 && online==0){
+        
+        $rootScope.product =  get_data_product(Product,$rootScope);
+        getdata ++;
+    }
+	  
 })
 .directive('nwCategorySelect', function (Category){
 		return {
@@ -90,7 +103,6 @@ angular.module('pooshak')
                         });
                     
                     
-                    
                    
                     $('body').delegate(".menu ","click",function(){
                         if(is_open==0){swiper2.slideNext();is_open=1;}else{swiper2.slidePrev();is_open=0;}
@@ -106,12 +118,72 @@ angular.module('pooshak')
                         }
                     });
              /*===============================================================================*/       
-                    var $container = $('#content');
-                    setTimeout(function(){
-                        //$container.packery({ itemSelector: '.one'});
-                    },2000);
-             /*===============================================================================*/          
+                    $('body').delegate('input[type="text"] ,input[type="number"] ,input[type="password"] ,input[type="email"], textarea',"focus",function(){
+                       // $('.content').scrollTop($(this).offset().top);
+                    });
+             /*===============================================================================*/    
+                   $('body').delegate('.product_one','click', function(){
+                     
+                        window.location.hash = $(this).attr('href');
+                        
+                    });
+             /*===============================================================================*/  
+                    $('body').delegate('nav ul li','click',function(){
+                        swiper2.slidePrev();
+                    });
+           
+            /*====================== click interneti link ===================================*/
+            /*======================end  click interneti link ===================================*/
+                $('body').delegate(".refresh","click",function(){
+                   online =  check_net();
+                        
+                    if(online == 1)
+                    {   $.fancybox.close();
+                        location.reload();
+                    }else{
+                       $('.refresh').fadeOut(100,function(){ $('.refresh').fadeIn(100)});
+                    }
+                    
+                });
+               /*======================chech dobare net===================================*/
+                
 
                 });	
             }
 }});
+
+/*
+ Product.all().success(function(data){
+            $rootScope.product = data;
+            document.getElementById("loading").style.display="none";
+            console.log(data);
+        });
+        getdata ++;
+
+*/
+function get_data_product(Product,$rootScope){
+   Product.all()
+   .success(function(data){
+       $rootScope.product = data;
+	   console.log($rootScope.product);
+	  document.getElementById("loading").style.display="none";
+       return $rootScope.Product;
+   })
+   .error(function(){
+      $rootScope.Product = "none";
+	   document.getElementById("loading").style.display="none";
+	   $.fancybox.open("<p>برای مشاهده این قسمت اینترنت گوشی خود را فعال کنید </p><button class='refresh'>تلاش مجدد</button>");
+       return $rootScope.Product;
+   });    
+}
+
+function check_net(){
+    var online = 0;
+    if (navigator.onLine){
+        online = 1;
+    }else{ 
+        online = 0; 
+    }
+    return online;
+}
+

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="format-detection" content="telephone=no" />
     <meta name="msapplication-tap-highlight" content="no" />
-    <meta name="viewport" content="width=device-width, initial-scale=1 ,  user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1 ,  user-scalable=no ">
     <link rel="stylesheet" media="all" href="css/reset.min.css" type="text/css">
     <link rel="stylesheet" media="all" href="css/style.css"  type="text/css">
     <link rel="stylesheet" media="all" href="css/swiper.min.css"  type="text/css">
@@ -13,10 +13,13 @@
 </head>
 
     <body>
+        <div id="loading" class="loading"><img src="img/loading.gif"></div>
         <sw-swipe>
             <div class="swiper-container swiper1">
+                 
                 <div class="swiper-wrapper">
                     <!---- swipe one load data --------------------------------->
+                    
                     <div class="swiper-slide" page="content">
                         <div class="contain">
                             <div ng-view></div>
@@ -31,10 +34,11 @@
                                 <nav>
                                     <ul>
                                     <nw-category-select active-category="activeCategory"></nw-category-select> 
-                                    <li><a href="#/myprofile"><img src="img/setting.png">مشخصات</a></li>
-                                    <li><a href="#/cart"><img src="img/buy_basket.png">سبد خرید</a></li>
-                                    <li><a href="#/wishlist"><img src="img/buy_basket.png">علاقه مندی ها</a></li>
-                                    <li><a href=""><img src="img/layette.png">درباره ما</a></li>                                
+                                    <li><a href="#/wishlist"><img src="img/tag.png">علاقه مندی ها</a></li>
+                                    <li><a href="#/myprofile"><img src="img/info.png">مشخصات</a></li>
+                                    <li><a href="#/cart"><img src="img/shopping_cart.png">سبد خرید</a></li>
+                                    <li><a href="#/support"><img src="img/support.png">پیگیری سفارش</a></li>
+                                    <li><a href=""><img src="img/faq.png">سوالات متداول</a></li>                                
                                 </ul>
                             </nav>
                         </div>
@@ -42,8 +46,11 @@
                     <!---- swipe two navigation --------------------------------->
                 </div>
                 <!-- Add Pagination -->
+               
             </div>
+            
         </sw-swipe>
+        
     </body>
     <!------ Auto loaded----------------------------------------------------------->
     <script type="text/javascript" src="js/angular.min.js"></script>
@@ -61,6 +68,7 @@
     <script src="js/controllers/cart-controller.js"></script>
     <script src="js/controllers/myprofile-controller.js"></script>
     <script src="js/controllers/wishlist-controller.js"></script>
+    <script src="js/controllers/support-controller.js"></script>
      <!------ library----------------------------------------------------------->
     <script type="text/javascript" src="js/swiper.min.js"></script> 
     <script type="text/javascript" src="js/swiper.jquery.min.js"></script> 

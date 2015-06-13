@@ -2,7 +2,7 @@
 <div class="header_page red">
     <div class="header_text">لیست علاقه مندی ها</div>
     <div class="buys">
-        <a class="tags" href="#/"><img src="img/icon_left.png"></a>
+        <a class="back_icon" href="#/"><img src="img/icon_left.png"></a>
     </div>
     <div class="clear"></div>
     <div class="your_order" >محصولات</div>
@@ -16,7 +16,7 @@
         <!-------------------------start product_cart--------------------------->
         <div class="product_cart">
             <!-------------------------start shopping_cart--------------------------->
-            <div class="shopping_cart bw" ng-repeat="card in card">
+            <div class="shopping_cart bw top20px" ng-repeat="card in card">
                 <span class="close_btn" p_id="{{card.ID}}"></span>
                 <div class="cart_img">
                 <img ng-src="{{card.img}}" ng-if="card.img" >
@@ -29,9 +29,11 @@
                 </div>
                 <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
                 <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>
+                <div class="clear"></div>
                   <div class="button_place_order">
                       <button id="to_card" p_id="{{card.ID}}">افزودن به سبد خرید</button>
                  </div>
+                <div class="clear"></div>
             </div>
         </div>
         <!------------------------- --------------------------->

@@ -2,7 +2,7 @@
 <div class="header_page red">
     <div class="header_text">سبد خرید</div>
     <div class="buys">
-        <a class="tags" href="#/"><img src="img/icon_left.png"></a>
+        <a class="back_icon" href="#/"><img src="img/icon_left.png"></a>
     </div>
     <div class="clear"></div>
     <div class="your_order" >سفارش های شما</div>
@@ -20,8 +20,8 @@
                 <span class="close_btn" p_id="{{card.ID}}" price="{{card.regular_price}}" ng-if="!card.sale_price" ></span>
                  <span class="close_btn" p_id="{{card.ID}}" price="{{card.sale_price}}" ng-if="card.sale_price" ></span>
                 <div class="cart_img">
-                <img ng-src="{{card.img}}" ng-if="card.img" >
-                <img src="img/no-img.jpg" ng-if="!card.img">
+                    <img ng-src="{{card.img}}" ng-if="card.img" >
+                    <img src="img/no-img.jpg" ng-if="!card.img">
                 </div>
                 <div class="detail_cust">
                     <p>{{card.post_title}}</p>
@@ -29,6 +29,7 @@
                 </div>
                 <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
                 <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>
+                <div class="clear"></div>
             </div>
              <!-------------------------end shopping_cart--------------------------->
              <div class="total_shipping bw">
