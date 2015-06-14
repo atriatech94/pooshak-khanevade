@@ -31,7 +31,11 @@
                 <div class="cust_cart" ng-if="!card.sale_price">{{card.regular_price | currency : '' : 0}} تومان</div>
                 <div class="cust_cart" ng-if="card.sale_price">{{card.sale_price | currency : '' : 0}} تومان</div>
                 <div class="clear"></div>
+               
             </div>
+             <div class="top20px" ng-if="card.length == 0 || !card">
+                      سبد خرید شما خالی است !
+                </div>
              <!-------------------------end shopping_cart--------------------------->
              <div class="total_shipping bw">
             <div class="shipping_cust">
@@ -73,7 +77,7 @@
                 <button id="buy">تکمیل خرید</button>
             </div>
             <div  class="button_cancel">
-                <button id="cancell">لغو خرید</button>
+                <button id="cancell">خالی کردن سبد خرید</button>
             </div>
         </div>
         <!------------------------- --------------------------->

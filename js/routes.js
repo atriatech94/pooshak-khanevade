@@ -24,6 +24,9 @@ angular.module('pooshak')
             templateUrl: 'pages/support/index.html',
             controller: 'SupportController',
         })
+        .when('/faq', {
+            templateUrl: 'pages/faq/index.html',
+        })
 		.when('/', {
             templateUrl: 'pages/home/index.html',
             controller: 'IndexController',

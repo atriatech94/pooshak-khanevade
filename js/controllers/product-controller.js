@@ -17,8 +17,7 @@ angular.module('pooshak')
 		return {
 			link: function($rootScope) {
 				$(document).ready(function () {
-					
-				
+								
 					
 						$('.add_to_cart_botten').click(function(){
 						
@@ -47,6 +46,8 @@ angular.module('pooshak')
 							  {
 								   text =  "در سبد خرید موجود است" ;
                                    $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+								    setTimeout(function(){$.fancybox.close();
+						           },2000);
 								  return false;
 								  
 							  }
@@ -89,6 +90,8 @@ angular.module('pooshak')
 						$('#card_count').text(String(parseInt($('#card_count').text())+1));
 						 text =  "به سبد خرید اضافه شد" ;
                          $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+						 setTimeout(function(){$.fancybox.close();
+						 },2000);
 	 
 					});
 					
@@ -120,6 +123,8 @@ angular.module('pooshak')
 									  {
 										  text =  "کالا در سبد خرید موجود است" ;
                                           $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+										   setTimeout(function(){$.fancybox.close();
+						                   },2000);
 										  return false;
 										  
 									  }
@@ -134,6 +139,8 @@ angular.module('pooshak')
 							  {
 								  text =  "کالا در لیست علاقه مندی ها موجود است" ;
                                  $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+								  setTimeout(function(){$.fancybox.close();
+						          },2000);
 								  return false;
 								  
 							  }
@@ -162,6 +169,8 @@ angular.module('pooshak')
 						}
 						text =  "به لیست علاقه مندی ها اضافه شد" ;
                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+						 setTimeout(function(){$.fancybox.close();
+						 },2000);
 					   //localStorage.clear();
 						
 					   
@@ -206,6 +215,8 @@ angular.module('pooshak')
 							  {
 								  text =  "در سبد خرید موجود است" ;
                                    $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+								    setTimeout(function(){$.fancybox.close();
+						            },2000);
 								  return false;
 								  
 							  }
@@ -248,6 +259,8 @@ angular.module('pooshak')
 						$('#card_count').text(String(parseInt($('#card_count').text())+1));
 						text =  "به سبد خرید اضافه شد" ;
                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+						 setTimeout(function(){$.fancybox.close();
+						 },2000);
 						
 						
 					   

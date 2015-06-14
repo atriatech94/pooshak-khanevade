@@ -18,7 +18,8 @@
         <!------------------start header product------------------------->
         <div class="product_h2">
             <span></span>
-                <h2>محصولات پوشاک خانواده</h2>
+                <h2 ng-if="activeCategory != 'همه'">{{activeCategory}}</h2>
+                <h2 ng-if="activeCategory == 'همه'">محصولات پوشاک خانواده</h2>
             <span></span>
         </div>
         <!------------------end header product------------------------->

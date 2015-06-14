@@ -2,7 +2,7 @@ is_open = 0 ;
 var getdata = 0;
 angular.module('pooshak')
 .controller('IndexController', function($scope,$rootScope,Product,Category) {
-		
+	
      document.getElementById("loading").style.display="block";
     
     if(localStorage.getItem('card') != null)
@@ -125,6 +125,11 @@ angular.module('pooshak')
 					  $(this).addClass('active');
 					
                     });
+					
+					$('nav').delegate("#atria","click",function(){
+					   window.open('http://atriatech.ir', '_blank', 'location=yes');
+					});
+					
 					$('nav').delegate("nw-category-item","click",function(){
 						
 						 $('nav').children('ul').children('li').removeClass('active');
@@ -185,7 +190,7 @@ function get_data_product(Product,$rootScope){
    .error(function(){
       $rootScope.Product = "none";
 	   document.getElementById("loading").style.display="none";
-	   $.fancybox.open("<p>برای مشاهده این قسمت اینترنت گوشی خود را فعال کنید </p><button class='refresh'>تلاش مجدد</button>");
+	   $.fancybox.open("<p> لطفا اینترنت گوشی خود را فعال کنید </p><button class='refresh'>تلاش مجدد</button>",{modal:true});
        return $rootScope.Product;
    });    
 }

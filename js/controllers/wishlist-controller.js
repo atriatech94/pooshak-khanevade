@@ -57,7 +57,15 @@ angular.module('pooshak')
 						    {
 								  if(wishlist[j].id == id)
 								  {
-									  card.push(wishlist[j]);
+									  if(card != null)
+									  {
+										  card.push(wishlist[j]);
+									  }
+									  else
+									  {
+										  card = [wishlist[j]];
+									  }
+									  
 						              localStorage.setItem("card", JSON.stringify(card));
 									  wishlist.splice(j, 1);
 									  localStorage.setItem("wish_list", JSON.stringify(wishlist));

@@ -22,7 +22,7 @@ function amintest(){
                                            
        var r = confirm("آیا برای خروج اطمینان دارید ؟");
         if (r == true) {
-        navigator.app.exitApp(); 
+         navigator.app.exitApp(); 
        }
     }                         
     else
