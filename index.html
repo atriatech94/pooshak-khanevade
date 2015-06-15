@@ -13,10 +13,12 @@
 </head>
 
     <body>
+       
         <div id="loading" class="loading"><img src="img/loading.gif"></div>
+        
         <sw-swipe>
             <div class="swiper-container swiper1">
-                 
+                  
                 <div class="swiper-wrapper">
                     <!---- swipe one load data --------------------------------->
                     
@@ -26,7 +28,7 @@
                         </div>
                     </div>
                     <!---- swipe two navigation --------------------------------->
-                        <div class="swiper-slide" page="nav">
+                        <div class="swiper-slide" id="nav_menu" page="nav">
                             <div class="nav_main">
                                 <div class="logo">
                                     <img src="img/logo.png" >
@@ -81,8 +83,6 @@
     <script type="text/javascript" src="js/moment-jalaali.js"></script> 
     <script type="text/javascript" src="js/fa.js"></script> 
     <script type="text/javascript" src="js/fancy/jquery.fancybox.js"></script>
-
-    
     <!------ controller----------------------------------------------------------->
     <script type="text/javascript">
         app.initialize();

@@ -86,7 +86,6 @@ angular.module('pooshak')
 			   }
 			
 }})
-
 .directive('swSwipe', function (){
 		return {
 			link: function($scope) {
@@ -164,12 +163,29 @@ angular.module('pooshak')
                     
                 });
                /*======================chech dobare net===================================*/
+                     
+                    setTimeout(function(){height_w();},100);
+                     
+                    $(window).on("resize",function(){
+                        setTimeout(function(){height_w();},100);
+                    });
+                    $(window).on('hashchange', function() {
+                        setTimeout(function(){height_w();},100);
+                    });
+               /*======================chech dobare net===================================*/
                 
 
                 });	
             }
 }});
 
+function height_w(){
+    var height = $(window).height();
+    $('.content').height(height);
+    $('#nav_menu').height(height);
+    $('.product_slider .swiper-container').height(height/2);
+    $( "select" ).wrap( "<div class ='new_select'></div>" );
+}
 /*
  Product.all().success(function(data){
             $rootScope.product = data;
