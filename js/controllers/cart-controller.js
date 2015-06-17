@@ -74,6 +74,7 @@ angular.module('pooshak')
 								{
 									 window.location.hash = "#/myprofile";
 									 setTimeout(function(){
+										localStorage.setItem('profile_card','1'); 
 										text =  "لطفا ابتدا اطلاعات خود را وارد نمایید سپس به سبد خرید رقته و فرایند خرید را ادامه دهید" ;
                                         $.fancybox.open( '<p class="alert">'+text+'</p>',{});
 									},55);

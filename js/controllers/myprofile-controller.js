@@ -65,8 +65,21 @@ angular.module('pooshak')
 					   }
 					  
 					  localStorage.setItem("user", JSON.stringify(user));
-					  text =  "اطلاعات با موفقیت ذخیره شد" ;
-                      $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+					  if(localStorage.getItem('profile_card'))
+					  {
+						  localStorage.removeItem("profile_card");
+						   window.location.hash = "#/cart";
+						    setTimeout(function(){
+								 text =  "اطلاعات با موفقیت ذخیره شد" ;
+                                 $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+								
+								},55)
+					  }
+					  else
+					  {
+						    text =  "اطلاعات با موفقیت ذخیره شد" ;
+                            $.fancybox.open( '<p class="alert">'+text+'</p>',{});
+					  }
 					  //localStorage.clear();
 					  return false;
 					   
