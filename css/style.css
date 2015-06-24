@@ -277,10 +277,10 @@ input[type="text"] {
 
 }
 .red{
-    background-color:#f6846a; 
+    background-color:#67b0d6; 
 }
 .medadi{
-    background-color: #38474f;
+    background-color: #67b0d6;
 
 }
 .header_page .menu{
@@ -487,7 +487,7 @@ input[type="text"] {
 }
 /*--=============--  product_detail --===================--*/
 .add_to_cart{
-    background-color: #38474f;
+    background-color: #67b0d6;
     height: 70px;
     width: 100%;
     text-align: center;
