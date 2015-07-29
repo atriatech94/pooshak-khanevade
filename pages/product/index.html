@@ -59,7 +59,7 @@
       
     <!------------------------ product_option ---------------------------->
             <div class="product_option">
-                <div class="option" ng-repeat="attribute in detail[0].attributes">
+                <div class="option" ng-repeat="attribute in detail[0].attributes"  ng-if="attribute[0] != 'دور کمر' && attribute[0] != 'ارتفاع' "> 
                     <p>{{attribute[0]}} : </p>
                     <select name="{{attribute[0]}}">
                         <option ng-repeat="attr in attribute" ng-if="$index != 0" value="{{attr}}">{{attr}}</option>
